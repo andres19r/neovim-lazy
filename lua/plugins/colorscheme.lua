@@ -51,6 +51,9 @@ return {
   },
   {
     "navarasu/onedark.nvim",
+    opts = {
+      style = "deep"
+    },
     lazy = false,
     priority = 1000,
   },

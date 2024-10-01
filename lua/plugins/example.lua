@@ -17,13 +17,12 @@ return {
       }
     },
   },
-  -- Configure LazyVim to load gruvbox
-  -- {
-  --   "LazyVim/LazyVim",
-  --   opts = {
-  --     colorscheme = "gruvbox",
-  --   },
-  -- },
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "onedark",
+    },
+  },
   {
     "hrsh7th/nvim-cmp",
     opts = function()
@@ -50,10 +49,15 @@ return {
       -- add a keymap to browse plugin files
       -- stylua: ignore
       {
-        "<leader>fp",
-        function() require("telescope.builtin").find_files({ cwd = require("lazy.core.config").options.root }) end,
-        desc = "Find Plugin File",
+        "<leader>fr",
+        function() require('telescope.builtin').oldfiles({ cwd = vim.fn.expand('%:p:h') }) end,
+        desc = "Fuzzy find recent files"
       },
+      {
+        "<C-p>",
+        function() require('telescope.builtin').find_files({ hidden = true, no_ignore = true }) end,
+        desc = "Find all files"
+      }
     },
     -- change some options
     opts = {
@@ -170,7 +174,7 @@ return {
         "shellcheck",
         "shfmt",
         "flake8",
-        -- "ts_ls",
+        "typescript-language-server",
         "html-lsp",
         "css-lsp",
         "lua-language-server",
