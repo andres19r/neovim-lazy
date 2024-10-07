@@ -54,6 +54,11 @@ return {
         desc = "Fuzzy find recent files"
       },
       {
+        "<leader>fs",
+        require('telescope.builtin').current_buffer_fuzzy_find,
+        desc = "Fuzzy find in current buffer"
+      },
+      {
         "<C-p>",
         function() require('telescope.builtin').find_files({ hidden = true, no_ignore = true }) end,
         desc = "Find all files"
