@@ -54,7 +54,7 @@ return {
         desc = "Fuzzy find recent files"
       },
       {
-        "<leader>fs",
+        "<leader>fa",
         require('telescope.builtin').current_buffer_fuzzy_find,
         desc = "Fuzzy find in current buffer"
       },
