@@ -24,19 +24,6 @@ return {
     },
   },
   {
-    "nvim-neo-tree/neo-tree.nvim",
-    opts = {
-      event_handlers = {
-        {
-          event = "file_open_requested",
-          handler = function()
-            require("neo-tree.command").execute({ action = "close" })
-          end
-        },
-      }
-    }
-  },
-  {
     "hrsh7th/nvim-cmp",
     opts = function()
       local cmp = require("cmp")
@@ -246,6 +233,14 @@ return {
     opts = {
       window = {
         auto_expand_width = true
+      },
+      event_handlers = {
+        {
+          event = "file_open_requested",
+          handler = function()
+            require("neo-tree.command").execute({ action = "close" })
+          end
+        },
       }
     }
   }
