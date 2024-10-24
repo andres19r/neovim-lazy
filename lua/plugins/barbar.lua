@@ -16,6 +16,8 @@ return {
 		map("n", "<C-A-,>", "<Cmd>BufferMovePrevious<CR>", opts)
 		map("n", "<C-A-.>", "<Cmd>BufferMoveNext<CR>", opts)
     map('n', '<leader><tab>', '<Cmd>b#<CR>', opts)
+    map('n', '<leader>.', '<Cmd>b#<CR>', opts)
+    map('n', '<leader>bl', '<Cmd>b#<CR>', opts)
 		-- Goto buffer in position...
 		map("n", "<A-1>", "<Cmd>BufferGoto 1<CR>", opts)
 		map("n", "<A-2>", "<Cmd>BufferGoto 2<CR>", opts)
@@ -46,7 +48,7 @@ return {
 		map("n", "<Space>bb", "<Cmd>BufferOrderByBufferNumber<CR>", opts)
 		map("n", "<Space>bn", "<Cmd>BufferOrderByName<CR>", opts)
 		map("n", "<Space>bd", "<Cmd>BufferOrderByDirectory<CR>", opts)
-		map("n", "<Space>bl", "<Cmd>BufferOrderByLanguage<CR>", opts)
+		-- map("n", "<Space>bl", "<Cmd>BufferOrderByLanguage<CR>", opts)
 		map("n", "<Space>bw", "<Cmd>BufferOrderByWindowNumber<CR>", opts)
 		map("n", "<Space>bC", "<Cmd>BufferCloseAllButVisible<CR>", opts)
 
