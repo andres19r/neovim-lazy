@@ -72,4 +72,14 @@ return {
     lazy = false,
     priority = 1000,
   },
+  {
+    "ribru17/bamboo.nvim",
+    lazy = false,
+    priority = 1000,
+  },
+  {
+    "webhooked/kanso.nvim",
+    lazy = false,
+    priority = 1000,
+  },
 }
