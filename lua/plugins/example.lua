@@ -20,7 +20,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "nord",
+      colorscheme = "kanso-zen",
     },
   },
   {
@@ -54,7 +54,7 @@ return {
         desc = "Fuzzy find recent files"
       },
       {
-        "<leader>fa",
+        "<leader>ss",
         require('telescope.builtin').current_buffer_fuzzy_find,
         desc = "Fuzzy find in current buffer"
       },
