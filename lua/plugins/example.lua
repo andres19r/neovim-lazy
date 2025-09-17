@@ -20,7 +20,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "kanso-zen",
+      colorscheme = "kanagawa",
     },
   },
   {
@@ -40,41 +40,6 @@ return {
       }),
       })
     end
-  },
-
-  -- change some telescope options and a keymap to browse plugin files
-  {
-    "nvim-telescope/telescope.nvim",
-    keys = {
-      -- add a keymap to browse plugin files
-      -- stylua: ignore
-      {
-        "<leader>fr",
-        function() require('telescope.builtin').oldfiles({ cwd = vim.fn.expand('%:p:h') }) end,
-        desc = "Fuzzy find recent files"
-      },
-      {
-        "<leader>ss",
-        require('telescope.builtin').current_buffer_fuzzy_find,
-        desc = "Fuzzy find in current buffer"
-      },
-      {
-        "<C-p>",
-        function() require('telescope.builtin').find_files({ hidden = true, no_ignore = true }) end,
-        desc = "Find all files"
-      }
-    },
-    -- change some options
-    opts = {
-      defaults = {
-        mappings = {
-          i = {
-            ["<C-k>"] = require("telescope.actions").move_selection_previous,
-            ["<C-j>"] = require("telescope.actions").move_selection_next,
-          },
-        },
-      },
-    },
   },
 
   -- add pyright to lspconfig
