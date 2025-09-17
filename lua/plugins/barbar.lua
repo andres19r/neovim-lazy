@@ -38,6 +38,7 @@ return {
 		--                 :BufferGotoUnpinned
 		-- Close buffer
 		map("n", "<A-k>", "<Cmd>BufferClose<CR>", opts)
+		map("n", "<Space>bd", "<Cmd>BufferClose<CR>", opts)
 
 		-- Other:
 		-- :BarbarEnable - enables barbar (enabled by default)

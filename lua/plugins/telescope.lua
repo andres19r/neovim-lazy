@@ -15,8 +15,9 @@ return {
     -- builtin.find_files({ previewer = false })
     vim.keymap.set('n', '<C-p>', function() builtin.find_files({ hidden = true, no_ignore = true }) end, {})
     -- vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-    vim.keymap.set('n', '<leader>f.', function() builtin.find_files({ cwd = utils.buffer_dir() }) end, {})
+    vim.keymap.set('n', '<leader>.', function() builtin.find_files({ cwd = utils.buffer_dir() }) end, {})
     vim.keymap.set('n', '<leader>pf', builtin.git_files, {})
+    vim.keymap.set('n', '<leader>pr', builtin.oldfiles, {})
     vim.keymap.set('n', '<leader>ss', builtin.current_buffer_fuzzy_find, {})
     vim.keymap.set('n', '<leader>ps', function()
       builtin.grep_string({ search = vim.fn.input("Grep > ") });
@@ -58,6 +59,11 @@ return {
         current_buffer_fuzzy_find = {
           theme = "ivy",
           previewer = false,
+        },
+        oldfiles = {
+          theme = "ivy",
+          previewer = false,
+          cwd_only = true,
         },
         buffers = {
           theme = "ivy",
