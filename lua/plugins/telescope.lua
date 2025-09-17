@@ -7,12 +7,12 @@ return {
     "folke/todo-comments.nvim",
   },
   config = function()
+    require('telescope').load_extension('possession')
     local actions = require("telescope.actions")
     local action_layout = require("telescope.actions.layout")
     local utils = require("telescope.utils")
     local builtin = require('telescope.builtin')
     local telescope = require("telescope")
-    -- builtin.find_files({ previewer = false })
     vim.keymap.set('n', '<C-p>', function() builtin.find_files({ hidden = true, no_ignore = true }) end, {})
     -- vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
     vim.keymap.set('n', '<leader>.', function() builtin.find_files({ cwd = utils.buffer_dir() }) end, {})

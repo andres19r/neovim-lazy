@@ -89,4 +89,11 @@ return {
       })
     end,
   },
+  {
+    "jedrzejboczar/possession.nvim",
+    requires = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("possession").setup({})
+    end
+  },
 }

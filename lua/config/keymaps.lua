@@ -48,7 +48,7 @@ map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
 map("n", "[q", vim.cmd.cprev, { desc = "Previous quickfix" })
 map("n", "]q", vim.cmd.cnext, { desc = "Next quickfix" })
 
-map("n", "<leader>q", "<cmd>q<cr>", { desc = "Quit all" })
+map("n", "<leader>qq", "<cmd>q<cr>", { desc = "Quit all" })
 
 map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
 
@@ -73,3 +73,8 @@ map("n", "<leader>w-", "<C-W>s", { desc = "Split window below", remap = true })
 map("n", "<leader>w|", "<C-W>v", { desc = "Split window right", remap = true })
 map("n", "<leader>ws", "<C-W>s", { desc = "Split window below", remap = true })
 map("n", "<leader>wv", "<C-W>v", { desc = "Split window right", remap = true })
+
+map("n", "<leader>qs", "<cmd>PossessionSave<cr>", { desc = "Save session" })
+map("n", "<leader>ql", "<cmd>PossessionLoad<cr>", { desc = "Save session" })
+map("n", "<leader>qd", "<cmd>PossessionDelete<cr>", { desc = "Save session" })
+map("n", "<leader>qp", "<cmd>Telescope possession list<cr>", { desc = "Save session" })
