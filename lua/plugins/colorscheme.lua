@@ -1,15 +1,5 @@
 return {
   {
-    "eldritch-theme/eldritch.nvim",
-    priority = 1000,
-    lazy = false,
-  },
-  {
-    "glepnir/zephyr-nvim",
-    lazy = false,
-    priority = 1000,
-  },
-  {
     "ellisonleao/gruvbox.nvim",
     lazy = false,
     priority = 1000,
@@ -63,11 +53,6 @@ return {
     priority = 1000,
   },
   {
-    "0xstepit/flow.nvim",
-    lazy = false,
-    priority = 1000,
-  },
-  {
     "shaunsingh/nord.nvim",
     lazy = false,
     priority = 1000,
@@ -83,7 +68,7 @@ return {
     priority = 1000,
   },
   {
-    "AlexvZyl/nordic.nvim",
+    "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
   }
