@@ -7,26 +7,30 @@ return {
     "folke/todo-comments.nvim",
   },
   config = function()
-    require('telescope').load_extension('possession')
+    require("telescope").load_extension("possession")
     local actions = require("telescope.actions")
     local action_layout = require("telescope.actions.layout")
     local utils = require("telescope.utils")
-    local builtin = require('telescope.builtin')
+    local builtin = require("telescope.builtin")
     local telescope = require("telescope")
-    vim.keymap.set('n', '<C-p>', function() builtin.find_files({ hidden = true, no_ignore = true }) end, {})
+    vim.keymap.set("n", "<C-p>", function()
+      builtin.find_files({ hidden = true, no_ignore = true })
+    end, {})
     -- vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-    vim.keymap.set('n', '<leader>.', function() builtin.find_files({ cwd = utils.buffer_dir() }) end, {})
-    vim.keymap.set('n', '<leader>pf', builtin.git_files, {})
-    vim.keymap.set('n', '<leader>pr', builtin.oldfiles, {})
-    vim.keymap.set('n', '<leader>ss', builtin.current_buffer_fuzzy_find, {})
-    vim.keymap.set('n', '<leader>ps', function()
-      builtin.grep_string({ search = vim.fn.input("Grep > ") });
+    vim.keymap.set("n", "<leader>.", function()
+      builtin.find_files({ cwd = utils.buffer_dir() })
+    end, {})
+    vim.keymap.set("n", "<leader>pf", builtin.git_files, {})
+    vim.keymap.set("n", "<leader>pr", builtin.oldfiles, {})
+    vim.keymap.set("n", "<leader>ss", builtin.current_buffer_fuzzy_find, {})
+    vim.keymap.set("n", "<leader>ps", function()
+      builtin.grep_string({ search = vim.fn.input("Grep > ") })
     end)
-    vim.keymap.set('n', '<leader>/', builtin.live_grep, {})
-    vim.keymap.set('n', '<leader>,', builtin.buffers, {})
-    vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+    vim.keymap.set("n", "<leader>/", builtin.live_grep, {})
+    vim.keymap.set("n", "<leader>,", builtin.buffers, {})
+    vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
 
-    vim.keymap.set('n', '<leader>ld', builtin.diagnostics, {})
+    vim.keymap.set("n", "<leader>ld", builtin.diagnostics, {})
     telescope.setup({
       defaults = {
         theme = "ivy",
@@ -38,6 +42,7 @@ return {
             ["<C-j>"] = actions.move_selection_next,
             ["<C-f>"] = action_layout.toggle_preview,
             ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+            ["<esc>"] = actions.close,
           },
         },
       },
@@ -67,8 +72,8 @@ return {
         buffers = {
           theme = "ivy",
           previewer = false,
-        }
-      }
+        },
+      },
     })
   end,
 }
