@@ -30,11 +30,17 @@ map("n", "<C-j>", "<C-w>j", { desc = "Go to lower window", remap = true })
 map("n", "<C-k>", "<C-w>k", { desc = "Go to upper window", remap = true })
 map("n", "<C-l>", "<C-w>l", { desc = "Go to right window", remap = true })
 
+map("n", "<leader>wh", "<C-w>h", { desc = "Go to left window", remap = true })
+map("n", "<leader>wj", "<C-w>j", { desc = "Go to lower window", remap = true })
+map("n", "<leader>wk", "<C-w>k", { desc = "Go to upper window", remap = true })
+map("n", "<leader>wl", "<C-w>l", { desc = "Go to right window", remap = true })
+
 map("n", "<leader>ur", "<Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>", { desc = "Redraw / clear hlsearch / diff update" })
 
 map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
 
 map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
+map("n", "<leader>bl", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 
 map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
 map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
@@ -42,7 +48,7 @@ map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
 map("n", "[q", vim.cmd.cprev, { desc = "Previous quickfix" })
 map("n", "]q", vim.cmd.cnext, { desc = "Next quickfix" })
 
-map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
+map("n", "<leader>q", "<cmd>q<cr>", { desc = "Quit all" })
 
 map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
 
@@ -65,5 +71,5 @@ map("n", "<leader>ww", "<C-W>p", { desc = "Other window", remap = true })
 map("n", "<leader>wd", "<C-W>c", { desc = "Delete window", remap = true })
 map("n", "<leader>w-", "<C-W>s", { desc = "Split window below", remap = true })
 map("n", "<leader>w|", "<C-W>v", { desc = "Split window right", remap = true })
-map("n", "<leader>-", "<C-W>s", { desc = "Split window below", remap = true })
-map("n", "<leader>|", "<C-W>v", { desc = "Split window right", remap = true })
+map("n", "<leader>ws", "<C-W>s", { desc = "Split window below", remap = true })
+map("n", "<leader>wv", "<C-W>v", { desc = "Split window right", remap = true })
