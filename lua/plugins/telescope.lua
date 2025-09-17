@@ -52,15 +52,12 @@ return {
         },
         live_grep = {
           theme = "ivy",
-          previewer = false,
         },
         grep_string = {
           theme = "ivy",
-          previewer = false,
         },
         current_buffer_fuzzy_find = {
           theme = "ivy",
-          previewer = false,
         },
         oldfiles = {
           theme = "ivy",

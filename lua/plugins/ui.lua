@@ -10,8 +10,17 @@ return {
         },
         sections = {
           lualine_a = { "mode" },
-          lualine_b = { "branch", "diff", "diagnostics" },
-          lualine_c = { "filename" },
+          lualine_b = {
+            {
+              "branch",
+              fmt = function(data)
+                  return data:sub(1, 30)
+              end,
+            },
+            "diff",
+            "diagnostics",
+          },
+          lualine_c = { { "filename", path = 1 } },
           lualine_x = { "encoding", "fileformat", "filetype" },
           lualine_y = { "progress" },
           lualine_z = { "location" },
@@ -39,7 +48,7 @@ return {
         },
       })
       vim.keymap.set("n", "<leader>e", "<cmd>:NvimTreeFindFile<CR>")
-    end
+    end,
   },
   {
     "folke/which-key.nvim",
