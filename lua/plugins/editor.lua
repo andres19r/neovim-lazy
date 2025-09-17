@@ -33,10 +33,13 @@ return {
     end,
   },
   {
-    "echasnovski/mini.surround",
-    version = "*",
+    "kylechui/nvim-surround",
+    version = "^3.0.0", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
     config = function()
-      require("mini.surround").setup()
-    end,
+        require("nvim-surround").setup({
+            -- Configuration here, or leave empty to use defaults
+        })
+    end
   },
 }

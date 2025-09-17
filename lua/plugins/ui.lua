@@ -20,58 +20,25 @@ return {
     end,
   },
   {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons",
-      "MunifTanjim/nui.nvim",
-    },
+    "nvim-tree/nvim-tree.lua",
     config = function()
-      require("neo-tree").setup({
-        close_if_last_window = false,
-        popup_border_style = "rounded",
-        enable_git_status = true,
-        enable_diagnostics = true,
-        filesystem = {
-          filtered_items = {
-            visible = false,
-            hide_dotfiles = true,
-            hide_gitignored = true,
-          },
-          follow_current_file = {
-            enabled = false,
-            leave_dirs_open = false,
-          },
-          group_empty_dirs = false,
-          hijack_netrw_behavior = "open_default",
-          use_libuv_file_watcher = false,
+      require("nvim-tree").setup({
+        view = {
+          width = {},
         },
-        buffers = {
-          follow_current_file = {
-            enabled = true,
-            leave_dirs_open = false,
-          },
-          group_empty_dirs = true,
-          show_unloaded = true,
+        update_focused_file = {
+          enable = true,
+          update_root = false,
+          ignore_list = {},
         },
-        git_status = {
-          symbols = {
-            added = "✚",
-            modified = "",
-            deleted = "✖",
-            renamed = "󰁕",
-            untracked = "",
-            ignored = "",
-            unstaged = "󰄱",
-            staged = "",
-            conflict = "",
+        actions = {
+          open_file = {
+            quit_on_open = true,
           },
         },
       })
-      
-      vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>", { silent = true })
-    end,
+      vim.keymap.set("n", "<leader>e", "<cmd>:NvimTreeFindFile<CR>")
+    end
   },
   {
     "folke/which-key.nvim",
