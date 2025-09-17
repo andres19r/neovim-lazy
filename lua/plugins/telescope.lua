@@ -25,11 +25,13 @@ return {
     vim.keymap.set('n', '<leader>/', builtin.live_grep, {})
     vim.keymap.set('n', '<leader>,', builtin.buffers, {})
     vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+
+    vim.keymap.set('n', '<leader>ld', builtin.diagnostics, {})
     telescope.setup({
       defaults = {
         theme = "ivy",
         previewer = false,
-        path_display = { "smart" },
+        -- path_display = { "smart" },
         mappings = {
           i = {
             ["<C-k>"] = actions.move_selection_previous,
