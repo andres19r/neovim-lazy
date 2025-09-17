@@ -38,9 +38,6 @@ return {
     "rebelot/kanagawa.nvim",
     lazy = false,
     priority = 1000,
-    config = function()
-      vim.cmd.colorscheme("kanagawa")
-    end,
   },
   {
     "oxfist/night-owl.nvim",
@@ -85,4 +82,9 @@ return {
     lazy = false,
     priority = 1000,
   },
+  {
+    "AlexvZyl/nordic.nvim",
+    lazy = false,
+    priority = 1000,
+  }
 }
