@@ -1,60 +1,104 @@
 return {
   {
-    "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
+    "saghen/blink.cmp",
+    enabled = true,
+    lazy = false, -- lazy loading handled internally
     dependencies = {
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-nvim-lua",
-      "L3MON4D3/LuaSnip",
-      "saadparwaiz1/cmp_luasnip",
+      "folke/lazydev.nvim",
+      "rafamadriz/friendly-snippets",
     },
-    config = function()
-      local cmp = require("cmp")
-      local luasnip = require("luasnip")
-      
-      cmp.setup({
-        snippet = {
-          expand = function(args)
-            luasnip.lsp_expand(args.body)
-          end,
+    -- version = "*",
+    build = "1.*",
+    opts = {
+      keymap = {
+        preset = "super-tab",
+        ["<CR>"] = { "select_and_accept", "fallback" },
+        ["<Tab>"] = {
+          "snippet_forward",
+          "fallback",
         },
-        mapping = cmp.mapping.preset.insert({
-          ["<C-k>"] = cmp.mapping.select_prev_item(),
-          ["<C-j>"] = cmp.mapping.select_next_item(),
-          ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-          ["<C-f>"] = cmp.mapping.scroll_docs(4),
-          ["<C-Space>"] = cmp.mapping.complete(),
-          ["<C-e>"] = cmp.mapping.abort(),
-          ["<CR>"] = cmp.mapping.confirm({ select = false }),
-          ["<Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_next_item()
-            elseif luasnip.expand_or_jumpable() then
-              luasnip.expand_or_jump()
-            else
-              fallback()
-            end
-          end, { "i", "s" }),
-          ["<S-Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then
-              luasnip.jump(-1)
-            else
-              fallback()
-            end
-          end, { "i", "s" }),
-        }),
-        sources = cmp.config.sources({
-          { name = "nvim_lsp" },
-          { name = "luasnip" },
-          { name = "buffer" },
-          { name = "path" },
-        }),
-      })
-    end,
+        ["<S-Tab>"] = { "snippet_backward", "fallback" },
+        -- ["<C-s>"] = { "show_signature", "hide_signature", "fallback" },
+      },
+      appearance = {
+        kind_icons = {
+          Text = "",
+          Method = "",
+          Function = "",
+          Constructor = "",
+          Field = "",
+          Variable = "",
+          Class = "",
+          Interface = "",
+          Module = "",
+          Property = "",
+          Unit = "",
+          Value = "",
+          Enum = "",
+          Keyword = "",
+          Snippet = "",
+          Color = "",
+          File = "",
+          Reference = "",
+          Folder = "",
+          EnumMember = "",
+          Constant = "",
+          Struct = "",
+          Event = "",
+          Operator = "",
+          TypeParameter = "",
+        },
+      },
+      sources = {
+        default = { "lsp", "path", "snippets", "buffer" },
+        per_filetype = {
+          lua = { "lsp", "path", "snippets", "buffer", "lazydev" },
+        },
+        providers = {
+          lazydev = { name = "LazyDev", module = "lazydev.integrations.blink" },
+          lsp = {
+            opts = { tailwind_color_icon = "" },
+            fallbacks = {},
+          },
+          snippets = {
+            opts = {
+              extended_filetypes = {
+                typescript = { "javascript" },
+                astro = { "javascript" },
+              },
+            },
+          },
+        },
+      },
+      completion = {
+        documentation = {
+          auto_show = true,
+          window = {
+            border = "padded",
+            max_width = math.floor(vim.o.columns / 4),
+          },
+        },
+        trigger = {
+          show_on_backspace = true,
+        },
+        menu = {
+          max_height = 6,
+          border = "none",
+        },
+        list = {
+          selection = {
+            preselect = false,
+            auto_insert = false,
+          },
+        },
+      },
+      signature = {
+        enabled = false,
+        window = {
+          -- border = defaults.border,
+        },
+      },
+    },
   },
   {
     "L3MON4D3/LuaSnip",
