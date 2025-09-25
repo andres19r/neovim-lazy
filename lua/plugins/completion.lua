@@ -14,10 +14,15 @@ return {
         preset = "super-tab",
         ["<CR>"] = { "select_and_accept", "fallback" },
         ["<Tab>"] = {
-          "snippet_forward",
+          "select_next",
           "fallback",
         },
-        ["<S-Tab>"] = { "snippet_backward", "fallback" },
+        ["<S-Tab>"] = { "select_prev", "fallback" },
+        ["<C-j>"] = {
+          "select_next",
+          "fallback",
+        },
+        ["<C-k>"] = { "select_prev", "fallback" },
         -- ["<C-s>"] = { "show_signature", "hide_signature", "fallback" },
       },
       appearance = {
@@ -87,7 +92,7 @@ return {
         },
         list = {
           selection = {
-            preselect = false,
+            preselect = true,
             auto_insert = false,
           },
         },
