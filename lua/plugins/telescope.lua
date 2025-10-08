@@ -16,7 +16,7 @@ return {
     vim.keymap.set("n", "<C-p>", function()
       builtin.find_files({ hidden = true, no_ignore = true })
     end, {})
-    -- vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+    vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
     vim.keymap.set("n", "<leader>.", function()
       builtin.find_files({ cwd = utils.buffer_dir() })
     end, {})

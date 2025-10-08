@@ -23,7 +23,7 @@ return {
           "fallback",
         },
         ["<C-k>"] = { "select_prev", "fallback" },
-        -- ["<C-s>"] = { "show_signature", "hide_signature", "fallback" },
+        ["<C-x>"] = { "hide", "show", "fallback" },
       },
       appearance = {
         kind_icons = {
