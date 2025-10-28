@@ -96,4 +96,48 @@ return {
       require("possession").setup({})
     end
   },
+  {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    ---@type snacks.Config
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+      bigfile = { enabled = true },
+      dashboard = { enabled = true },
+      explorer = { enabled = true },
+      indent = { enabled = true },
+      input = { enabled = true },
+      picker = { enabled = true },
+      notifier = { enabled = true },
+      quickfile = { enabled = true },
+      scope = { enabled = true },
+      scroll = { enabled = true },
+      statuscolumn = { enabled = true },
+      words = { enabled = true },
+      lazygit = {
+        enabled = true,
+        config = {
+          os = {
+            edit = '[ -z "$NVIM" ] && (nvim -- {{filename}}) || (nvim --server "$NVIM" --remote-send "<CMD>q<CR>" && nvim --server "$NVIM" --remote {{filename}})',
+            editAtLine = '[ -z "$NVIM" ] && (nvim +{{line}} -- {{filename}}) || (nvim --server "$NVIM" --remote-send "<CMD>q<CR>" &&  nvim --server "$NVIM" --remote {{filename}} && nvim --server "$NVIM" --remote-send ":{{line}}<CR>")',
+            editAtLineAndWait = "nvim +{{line}} {{filename}}",
+            openDirInEditor = '[ -z "$NVIM" ] && (nvim -- {{dir}}) || (nvim --server "$NVIM" --remote-send "<CMD>q<CR>" && nvim --server "$NVIM" --remote {{dir}})',
+          },
+          promptToReturnFromSubprocess = false,
+        },
+      }
+    },
+    config = function (_, opts)
+      require("snacks").setup(opts)
+    end,
+    keys = {
+      { "<leader>lg", function() Snacks.lazygit.open() end, desc = "Open Lazygit" },
+      { "<leader>z", function() Snacks.zen() end, desc = "Toggle Zen Mode", },
+      { "<leader>fe", function() Snacks.picker.explorer() end, desc = "FZF - Explorer" },
+      { "<leader>ff", function() Snacks.picker.files() end, desc = "FZF - Files" },
+    }
+  }
 }
