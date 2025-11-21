@@ -7,9 +7,10 @@ return {
       "folke/lazydev.nvim",
       "rafamadriz/friendly-snippets",
     },
-    -- version = "*",
-    build = "1.*",
+    version = "1.*",
+    build = "cargo build --release",
     opts = {
+      fuzzy = { implementation = "prefer_rust"},
       keymap = {
         preset = "super-tab",
         ["<CR>"] = { "select_and_accept", "fallback" },
