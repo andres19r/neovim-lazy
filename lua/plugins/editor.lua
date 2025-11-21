@@ -121,23 +121,35 @@ return {
         enabled = true,
         config = {
           os = {
-            edit = '[ -z "$NVIM" ] && (nvim -- {{filename}}) || (nvim --server "$NVIM" --remote-send "<CMD>q<CR>" && nvim --server "$NVIM" --remote {{filename}})',
-            editAtLine = '[ -z "$NVIM" ] && (nvim +{{line}} -- {{filename}}) || (nvim --server "$NVIM" --remote-send "<CMD>q<CR>" &&  nvim --server "$NVIM" --remote {{filename}} && nvim --server "$NVIM" --remote-send ":{{line}}<CR>")',
+            edit =
+            '[ -z "$NVIM" ] && (nvim -- {{filename}}) || (nvim --server "$NVIM" --remote-send "<CMD>q<CR>" && nvim --server "$NVIM" --remote {{filename}})',
+            editAtLine =
+            '[ -z "$NVIM" ] && (nvim +{{line}} -- {{filename}}) || (nvim --server "$NVIM" --remote-send "<CMD>q<CR>" &&  nvim --server "$NVIM" --remote {{filename}} && nvim --server "$NVIM" --remote-send ":{{line}}<CR>")',
             editAtLineAndWait = "nvim +{{line}} {{filename}}",
-            openDirInEditor = '[ -z "$NVIM" ] && (nvim -- {{dir}}) || (nvim --server "$NVIM" --remote-send "<CMD>q<CR>" && nvim --server "$NVIM" --remote {{dir}})',
+            openDirInEditor =
+            '[ -z "$NVIM" ] && (nvim -- {{dir}}) || (nvim --server "$NVIM" --remote-send "<CMD>q<CR>" && nvim --server "$NVIM" --remote {{dir}})',
           },
           promptToReturnFromSubprocess = false,
         },
       }
     },
-    config = function (_, opts)
+    config = function(_, opts)
       require("snacks").setup(opts)
     end,
     keys = {
-      { "<leader>lg", function() Snacks.lazygit.open() end, desc = "Open Lazygit" },
-      { "<leader>z", function() Snacks.zen() end, desc = "Toggle Zen Mode", },
+      { "<leader>lg", function() Snacks.lazygit.open() end,    desc = "Open Lazygit" },
+      { "<leader>z",  function() Snacks.zen() end,             desc = "Toggle Zen Mode", },
       { "<leader>fe", function() Snacks.picker.explorer() end, desc = "FZF - Explorer" },
-      { "<leader>ff", function() Snacks.picker.files() end, desc = "FZF - Files" },
+      { "<leader>ff", function() Snacks.picker.files() end,    desc = "FZF - Files" },
+    }
+  },
+  {
+    'akinsho/toggleterm.nvim',
+    version = "*",
+    config = true,
+    keys = {
+      { "<leader>ot", "<Cmd>ToggleTerm<CR>", desc = "Open term" },
+      { "<leader>oT", "<Cmd>terminal<CR>",   desc = "Open term maximized" },
     }
   }
 }
