@@ -1,3 +1,5 @@
+local defaults = require("config.defaults")
+
 return {
   {
     "saghen/blink.cmp",
@@ -7,10 +9,10 @@ return {
       "folke/lazydev.nvim",
       "rafamadriz/friendly-snippets",
     },
-    version = "1.*",
+    -- version = "1.*",
     build = "cargo build --release",
     opts = {
-      fuzzy = { implementation = "prefer_rust"},
+      fuzzy = { implementation = "prefer_rust" },
       keymap = {
         preset = "super-tab",
         ["<CR>"] = { "select_and_accept", "fallback" },
@@ -86,10 +88,14 @@ return {
         },
         trigger = {
           show_on_backspace = true,
+          show_on_insert_on_trigger_character = true,
+          show_on_x_blocked_trigger_characters = {
+            "'", '"', '(', '{', '['
+          }
         },
         menu = {
           max_height = 6,
-          border = "none",
+          -- border = "none",
         },
         list = {
           selection = {
@@ -101,7 +107,7 @@ return {
       signature = {
         enabled = false,
         window = {
-          -- border = defaults.border,
+          border = defaults.border,
         },
       },
     },
