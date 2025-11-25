@@ -42,6 +42,8 @@ vim.opt.wildmode = "longest:full,full"
 vim.opt.winminwidth = 5
 vim.opt.wrap = true
 vim.opt.linebreak = true
+vim.opt.cindent = true
+vim.opt.autoindent = true
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
