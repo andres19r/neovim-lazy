@@ -148,8 +148,8 @@ return {
     version = "*",
     config = true,
     keys = {
-      { "<leader>ot", "<Cmd>ToggleTerm<CR>", desc = "Open term" },
-      { "<leader>oT", "<Cmd>terminal<CR>",   desc = "Open term maximized" },
+      { "<leader>ot", "<Cmd>ToggleTerm direction=float<CR>", desc = "Open term" },
+      { "<leader>oT", "<Cmd>ToggleTerm direction=tab<CR>",   desc = "Open term maximized" },
     }
   }
 }
