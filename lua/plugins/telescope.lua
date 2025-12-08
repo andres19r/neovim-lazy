@@ -42,36 +42,8 @@ return {
             ["<C-j>"] = actions.move_selection_next,
             ["<C-f>"] = action_layout.toggle_preview,
             ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
-            ["<esc>"] = actions.close,
+            -- ["<esc>"] = actions.close,
           },
-        },
-      },
-      pickers = {
-        find_files = {
-          theme = "ivy",
-          previewer = false,
-        },
-        git_files = {
-          theme = "ivy",
-          previewer = false,
-        },
-        live_grep = {
-          theme = "ivy",
-        },
-        grep_string = {
-          theme = "ivy",
-        },
-        current_buffer_fuzzy_find = {
-          theme = "ivy",
-        },
-        oldfiles = {
-          theme = "ivy",
-          previewer = false,
-          cwd_only = true,
-        },
-        buffers = {
-          theme = "ivy",
-          previewer = false,
         },
       },
     })

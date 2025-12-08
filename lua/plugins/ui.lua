@@ -14,7 +14,7 @@ return {
             {
               "branch",
               fmt = function(data)
-                  return data:sub(1, 30)
+                return data:sub(1, 30)
               end,
             },
             "diff",
@@ -60,6 +60,22 @@ return {
     config = function()
       require("which-key").setup()
     end,
+    keys = {
+      {
+        "<leader>?",
+        function()
+          require("which-key").show({ global = false })
+        end,
+        desc = "Buffer Keymaps (which-key)",
+      },
+      {
+        "<c-w><space>",
+        function()
+          require("which-key").show({ keys = "<c-w>", loop = true })
+        end,
+        desc = "Window Hydra Mode (which-key)",
+      },
+    },
   },
   {
     "lukas-reineke/indent-blankline.nvim",
