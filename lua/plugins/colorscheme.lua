@@ -45,11 +45,7 @@ return {
     priority = 1000,
   },
   {
-    "navarasu/onedark.nvim",
-    opts = {
-      style = "deep"
-    },
-    lazy = false,
+    "olimorris/onedarkpro.nvim",
     priority = 1000,
   },
   {
