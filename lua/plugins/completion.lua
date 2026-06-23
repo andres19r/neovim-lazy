@@ -9,10 +9,12 @@ return {
       "folke/lazydev.nvim",
       "rafamadriz/friendly-snippets",
     },
-    -- version = "1.*",
-    build = "cargo build --release",
+    branch = 'v1',
+    version = "1.*",
+    -- build = "cargo build --release",
     opts = {
-      fuzzy = { implementation = "prefer_rust" },
+      -- fuzzy = { implementation = "prefer_rust" },
+      fuzzy = { implementation = "prefer_rust_with_warning" },
       keymap = {
         preset = "super-tab",
         ["<CR>"] = { "select_and_accept", "fallback" },
@@ -21,11 +23,11 @@ return {
           "fallback",
         },
         ["<S-Tab>"] = { "select_prev", "fallback" },
-        ["<C-j>"] = {
+        ["<C-n>"] = {
           "select_next",
           "fallback",
         },
-        ["<C-k>"] = { "select_prev", "fallback" },
+        ["<C-p>"] = { "select_prev", "fallback" },
         ["<C-x>"] = { "hide", "show", "fallback" },
       },
       appearance = {

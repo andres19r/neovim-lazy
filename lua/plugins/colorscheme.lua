@@ -59,6 +59,21 @@ return {
     priority = 1000,
   },
   {
+    "sainnhe/everforest",
+    lazy = false,
+    priority = 1000,
+  },
+  {
+    "catppuccin/nvim",
+    lazy = false,
+    priority = 1000,
+  },
+  {
+    "rmehri01/onenord.nvim",
+    lazy = false,
+    priority = 1000,
+  },
+  {
     "ribru17/bamboo.nvim",
     lazy = false,
     priority = 1000,
@@ -72,6 +87,14 @@ return {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
+  },
+  {
+    "benjasper/nightfall.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("nightfall").setup()
+    end
   },
   {
     "AlexvZyl/nordic.nvim",

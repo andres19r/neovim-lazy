@@ -5,6 +5,13 @@ return {
       require("mason").setup()
     end,
   },
+  -- {
+  --   'nvim-java/nvim-java',
+  --   config = function()
+  --     require('java').setup()
+  --     vim.lsp.enable('jdtls')
+  --   end,
+  -- },
   {
     "mason-org/mason-lspconfig.nvim",
     config = function()
@@ -19,6 +26,7 @@ return {
           "cssls",
           "jsonls",
         },
+        -- Inside your config function (where you see 'require('mason-lspconfig').setup')
       })
     end,
   },
@@ -43,8 +51,61 @@ return {
           },
         },
       })
-      vim.lsp.config("*", {
-        capabilities = capabilities,
+      local servers = {
+        -- ... your existing servers (pyright, lua_ls, etc.) ...
+
+        -- Add or modify these two entries:
+        ts_ls = {
+          filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+          init_options = {
+            plugins = {
+              {
+                name = '@vue/typescript-plugin',
+                location = vim.fn.stdpath('data') ..
+                    '/mason/packages/vue-language-server/node_modules/@vue/language-server',
+                languages = { 'vue' },
+              },
+            },
+          },
+        },
+
+        vue_ls = {}, -- Vue language server (handles template + CSS)
+      }
+
+
+      -- Setup mason-lspconfig with handlers
+      require('mason-lspconfig').setup({
+        ensure_installed = vim.tbl_keys(servers),
+        handlers = {
+          function(server_name)
+            local server = servers[server_name] or {}
+            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+            require('lspconfig')[server_name].setup(server)
+          end,
+        },
+      })
+
+      -- Ensure ts_ls attaches to Vue files
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = 'vue',
+        callback = function(args)
+          local root_dir = vim.fs.root(args.buf, { 'package.json', 'tsconfig.json', 'jsconfig.json' })
+          local init_options = vim.deepcopy(servers.ts_ls.init_options)
+
+          local mason_path = vim.fn.stdpath('data') ..
+              '/mason/packages/vue-language-server/node_modules/@vue/language-server'
+          if vim.fn.isdirectory(mason_path) == 1 then
+            init_options.plugins[1].location = mason_path
+          end
+
+          vim.lsp.start({
+            name = 'ts_ls',
+            cmd = { 'typescript-language-server', '--stdio' },
+            root_dir = root_dir,
+            init_options = init_options,
+            capabilities = capabilities,
+          })
+        end,
       })
       local opts = { buffer = bufnr, remap = false }
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
