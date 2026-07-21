@@ -48,7 +48,9 @@ map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
 map("n", "[q", vim.cmd.cprev, { desc = "Previous quickfix" })
 map("n", "]q", vim.cmd.cnext, { desc = "Next quickfix" })
 
-map("n", "<leader>qq", "<cmd>q<cr>", { desc = "Quit all" })
+map("n", "<leader>qq", "<cmd>q<cr>", { desc = "Quit window" })
+map("n", "<leader>wb", "<cmd>q<cr>", { desc = "Quit window" })
+map("n", "<leader>qQ", "<cmd>Q<cr>", { desc = "Force quit window" })
 
 map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
 
@@ -75,7 +77,36 @@ map("n", "<leader>ws", "<C-W>s", { desc = "Split window below", remap = true })
 map("n", "<leader>wv", "<C-W>v", { desc = "Split window right", remap = true })
 map("n", "<leader>w=", "<cmd>wincmd =<cr>", { desc = "Previous Tab" })
 
-map("n", "<leader>qs", "<cmd>PossessionSave<cr>", { desc = "Save session" })
-map("n", "<leader>ql", "<cmd>PossessionLoad<cr>", { desc = "Load session" })
-map("n", "<leader>qd", "<cmd>PossessionDelete<cr>", { desc = "Delete session" })
-map("n", "<leader>qp", "<cmd>Telescope possession list<cr>", { desc = "List sessions" })
+map("n", "<leader>ss", "<cmd>PossessionSave<cr>", { desc = "Save session" })
+map("n", "<leader>sl", "<cmd>PossessionLoad<cr>", { desc = "Load session" })
+map("n", "<leader>sd", "<cmd>PossessionDelete<cr>", { desc = "Delete session" })
+map("n", "<leader>sp", "<cmd>Telescope possession list<cr>", { desc = "List sessions" })
+
+map("n", "<leader>qf", function()
+  require("quicker").toggle()
+end, {
+  desc = "Toggle quickfix",
+})
+map("n", "<leader>l", function()
+  require("quicker").toggle({ loclist = true })
+end, {
+  desc = "Toggle loclist",
+})
+require("quicker").setup({
+  keys = {
+    {
+      ">",
+      function()
+        require("quicker").expand({ before = 2, after = 2, add_to_existing = true })
+      end,
+      desc = "Expand quickfix context",
+    },
+    {
+      "<",
+      function()
+        require("quicker").collapse()
+      end,
+      desc = "Collapse quickfix context",
+    },
+  },
+})

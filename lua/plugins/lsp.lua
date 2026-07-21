@@ -70,7 +70,20 @@ return {
         },
 
         vue_ls = {}, -- Vue language server (handles template + CSS)
+
       }
+
+      -- mason-lspconfig v2 auto-enables installed servers via vim.lsp.enable()
+      -- using their bundled default config; this is the supported way to
+      -- override/extend that default (e.g. adding `php` to emmet's filetypes).
+      vim.lsp.config('emmet_language_server', {
+        capabilities = capabilities,
+        filetypes = {
+          'astro', 'css', 'eruby', 'html', 'htmlangular', 'htmldjango',
+          'javascriptreact', 'less', 'sass', 'scss', 'svelte',
+          'typescriptreact', 'vue', 'php',
+        },
+      })
 
 
       -- Setup mason-lspconfig with handlers
@@ -226,4 +239,41 @@ return {
       require('flutter-tools').setup {}
     end,
   },
+  {
+    "folke/trouble.nvim",
+    opts = {}, -- for default options, refer to the configuration section for custom setup.
+    cmd = "Trouble",
+    keys = {
+      {
+        "<leader>xx",
+        "<cmd>Trouble diagnostics toggle<cr>",
+        desc = "Diagnostics (Trouble)",
+      },
+      {
+        "<leader>xX",
+        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+        desc = "Buffer Diagnostics (Trouble)",
+      },
+      {
+        "<leader>cs",
+        "<cmd>Trouble symbols toggle focus=false<cr>",
+        desc = "Symbols (Trouble)",
+      },
+      {
+        "<leader>cl",
+        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+        desc = "LSP Definitions / references / ... (Trouble)",
+      },
+      {
+        "<leader>xL",
+        "<cmd>Trouble loclist toggle<cr>",
+        desc = "Location List (Trouble)",
+      },
+      {
+        "<leader>xQ",
+        "<cmd>Trouble qflist toggle<cr>",
+        desc = "Quickfix List (Trouble)",
+      },
+    },
+  }
 }
