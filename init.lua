@@ -12,4 +12,4 @@ vim.api.nvim_create_autocmd("User", {
   end,
 })
 
-vim.cmd([[colorscheme gruvbox]])
+vim.cmd([[colorscheme ayu-mirage]])

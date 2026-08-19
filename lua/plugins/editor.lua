@@ -50,13 +50,6 @@ return {
     end,
   },
   {
-    "jedrzejboczar/possession.nvim",
-    requires = { "nvim-lua/plenary.nvim" },
-    config = function()
-      require("possession").setup({})
-    end
-  },
-  {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
@@ -120,5 +113,14 @@ return {
     ---@module 'render-markdown'
     ---@type render.md.UserConfig
     opts = {},
+  },
+  {
+    "selimacerbas/live-server.nvim",
+    cmd = { "LiveServerStart", "LiveServerStop", "LiveServerToggle" },
+    keys = {
+      { "<leader>ls", "<cmd>LiveServerStart<cr>", desc = "Start Live Server" },
+      { "<leader>lx", "<cmd>LiveServerStop<cr>",  desc = "Stop Live Server" },
+    },
+    config = true
   }
 }

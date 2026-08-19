@@ -77,11 +77,6 @@ map("n", "<leader>ws", "<C-W>s", { desc = "Split window below", remap = true })
 map("n", "<leader>wv", "<C-W>v", { desc = "Split window right", remap = true })
 map("n", "<leader>w=", "<cmd>wincmd =<cr>", { desc = "Previous Tab" })
 
-map("n", "<leader>ss", "<cmd>PossessionSave<cr>", { desc = "Save session" })
-map("n", "<leader>sl", "<cmd>PossessionLoad<cr>", { desc = "Load session" })
-map("n", "<leader>sd", "<cmd>PossessionDelete<cr>", { desc = "Delete session" })
-map("n", "<leader>sp", "<cmd>Telescope possession list<cr>", { desc = "List sessions" })
-
 map("n", "<leader>qf", function()
   require("quicker").toggle()
 end, {

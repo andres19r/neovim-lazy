@@ -7,7 +7,6 @@ return {
     "folke/todo-comments.nvim",
   },
   config = function()
-    require("telescope").load_extension("possession")
     local actions = require("telescope.actions")
     local action_layout = require("telescope.actions.layout")
     local utils = require("telescope.utils")
